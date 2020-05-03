@@ -1,3 +1,4 @@
+from geopy.geocoders import Nominatim
 from prettytable import PrettyTable
 from datetime import datetime
 import requests
@@ -59,6 +60,7 @@ def get_capital():
    
 def get_coordinates():
 
+    global capital
     capital = get_capital()[0]
     country = get_capital()[1]
 
@@ -75,11 +77,21 @@ def get_coordinates():
 
 def get_passes():
 
-    lat = get_coordinates()[1]
-    lon = get_coordinates()[0]
-    request_passes = requests.get('http://api.open-notify.org/iss-pass.json?lat={}&lon={}'.format(lat, lon)).json()
+    try:
+        lat = get_coordinates()[1]
+        lon = get_coordinates()[0]
+        request_passes = requests.get('http://api.open-notify.org/iss-pass.json?lat={}&lon={}'.format(lat, lon)).json()
 
-    return request_passes
+        return request_passes
+
+    except IndexError:
+        geolocator = Nominatim(user_agent="ISS-Tracker")
+        location = geolocator.geocode(capital)
+        lat = location.latitude
+        lon = location.longitude
+        request_passes = requests.get('http://api.open-notify.org/iss-pass.json?lat={}&lon={}'.format(lat, lon)).json()
+
+        return request_passes
 
 def get_people():
 
@@ -137,4 +149,3 @@ if connection() == True:
         print("Programme Interrupted")
 else:
     quit()
-
