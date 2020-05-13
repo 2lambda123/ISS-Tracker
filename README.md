@@ -35,7 +35,7 @@ python tracker.py
 - Contributions of any kind welcome!
 
 ## License
-MIT ©[sameera-madushan](https://github.com/sameera-madushan)
+ISS Tracker is made with ♥ by [@_\_sa_miya__](https://twitter.com/__sa_miya__) and it is released under the MIT license.
 
 ## Special Thanks
 Devolopers of [WTIA](https://wheretheiss.at/w/developer) API and [Open Notify](http://open-notify.org/Open-Notify-API/) API --> Used to get real-time information about the ISS.
