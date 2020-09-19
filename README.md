@@ -1,3 +1,4 @@
+# *** This project is not maintained anymore ***
 # ISS-Tracker - Tracking the International Space Station
 
 ISS Tracker is a python script to collect real-time information related to the International Space Station (ISS) just from your terminal. This script uses [WTIA](https://wheretheiss.at/w/developer) and [Open Notify](http://open-notify.org/Open-Notify-API/) APIs to get the information related to ISS.
